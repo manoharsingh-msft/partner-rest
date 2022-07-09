@@ -72,3 +72,22 @@ This method is recommended for **application-only access** setup to the APIs.
 ## Partner consent
 
 In the Azure management portal, select **Enterprise applications**. Search for the application you created in the previous section, and select that application. Select **Permissions** , then select **Grant Admin Consent for Partner Account**.
+
+## Generate Azure AD Auth Token
+ After having completed above application registration and account setup steps, you can now generate a **auth token** calling below login api with either programatically or using a rest client. 
+  
+ For more details follow this documentation: [Azure AD for developers](https://docs.microsoft.com/en-us/azure/active-directory/azuread-dev/v1-protocols-openid-connect-code).
+ 
+ * Method - **GET** 
+ * URL - **https://login.microsoftonline.com/common/oauth2/token**
+ * Headers - 
+ 
+         Content-Type: application/x-www-form-urlencoded
+ * Body Params (urlencoded) -
+
+         grant_type=password
+         scope=openid
+         resource=https://api.partner.microsoft.com
+         client_id=<CLIENT_ID_GENERATED_WHEN_DOING_APP_REG>
+         username=<PARTNER's UPN/EMAIL ID>
+         password=<PARTNER's UPN/EMAIL PASSWORD> 
